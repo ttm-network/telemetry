@@ -1,0 +1,45 @@
+{
+  "name": "ttm-network/telemetry",
+  "type": "library",
+  "description": "Telemetry is a collection of tools to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.",
+  "license": "MIT",
+  "homepage": "https://ttm.network",
+  "support": {
+    "issues": "https://github.com/ttm-network/framework/issues",
+    "source": "https://github.com/ttm-network/telemetry"
+  },
+  "authors": [],
+  "require": {
+    "php": ">=8.1",
+    "psr/container": "^1.0|^2.0",
+    "yiisoft/injector": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.4",
+    "vimeo/psalm": "^5.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "TTM\\Telemetry\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TTM\\Tests\\Telemetry\\": "tests"
+    }
+  },
+  "extra": {
+    "config-plugin-options": {
+      "source-directory": "config"
+    },
+    "config-plugin": {
+      "params": "params.php",
+      "di": "di.php"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
