@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Telemetry;
+namespace TTM\Telemetry;
 
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\UuidFactory;

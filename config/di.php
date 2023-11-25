@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
-use Yiisoft\Telemetry\Clock\SystemClock;
-use Yiisoft\Telemetry\ClockInterface;
-use Yiisoft\Telemetry\ConfigTracerFactoryProvider;
-use Yiisoft\Telemetry\LogTracer;
-use Yiisoft\Telemetry\TracerFactoryInterface;
-use Yiisoft\Telemetry\TracerFactoryProviderInterface;
-use Yiisoft\Telemetry\TracerInterface;
+use TTM\Telemetry\Clock\SystemClock;
+use TTM\Telemetry\ClockInterface;
+use TTM\Telemetry\ConfigTracerFactoryProvider;
+use TTM\Telemetry\LogTracer;
+use TTM\Telemetry\TracerFactoryInterface;
+use TTM\Telemetry\TracerFactoryProviderInterface;
+use TTM\Telemetry\TracerInterface;
 
 /** @var array $params */
 return [

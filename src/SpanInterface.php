@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Telemetry;
+namespace TTM\Telemetry;
 
 use Throwable;
-use Yiisoft\Telemetry\Span\Status;
+use TTM\Telemetry\Span\Status;
 
 interface SpanInterface
 {

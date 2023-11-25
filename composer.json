@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Yiisoft\\Telemetry\\": "src"
+      "TTM\\Telemetry\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Yiisoft\\Tests\\Telemetry\\": "tests"
+      "TTM\\Tests\\Telemetry\\": "tests"
     }
   },
   "extra": {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yiisoft\Tests\Telemetry;
 
 use PHPUnit\Framework\TestCase;
-use Yiisoft\Telemetry\Span;
+use TTM\Telemetry\Span;
 
 final class SpanTest extends TestCase
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Api\Infrastructure\Telemetry;
 
-namespace Yiisoft\Telemetry;
+namespace TTM\Telemetry;
 
 interface TracerFactoryInterface
 {

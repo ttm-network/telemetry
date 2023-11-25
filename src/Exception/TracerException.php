@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Telemetry\Exception;
+namespace TTM\Telemetry\Exception;
 
 class TracerException extends \Exception
 {
