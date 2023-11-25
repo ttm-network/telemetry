@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TTM\Tests\Telemetry;
+namespace Yiisoft\Tests\Telemetry;
 
 use PHPUnit\Framework\TestCase;
-use TTM\Telemetry\Clock\SystemClock;
+use Yiisoft\Telemetry\Clock\SystemClock;
 
 final class SystemClockTest extends TestCase
 {

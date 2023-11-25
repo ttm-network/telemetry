@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
-use TTM\Telemetry\Span\Status;
+use Throwable;
+use Yiisoft\Telemetry\Span\Status;
 
 interface SpanInterface
 {
@@ -51,6 +52,13 @@ interface SpanInterface
      * @param non-empty-string $name
      */
     public function setAttribute(string $name, mixed $value): self;
+
+    /**
+     * Add event to current span
+     */
+    public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface;
+
+    public function recordException(Throwable $exception, iterable $attributes = []): SpanInterface;
 
     /**
      * Check if the current span has an attribute with given name.

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
-use TTM\Telemetry\Span\Status;
+use Throwable;
+use Yiisoft\Telemetry\Span\Status;
 
 /**
  * @internal
@@ -73,5 +74,15 @@ final class Span implements SpanInterface
     public function getStatus(): ?Status
     {
         return $this->status;
+    }
+
+    public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface
+    {
+        // TODO: Implement addEvent() method.
+    }
+
+    public function recordException(Throwable $exception, iterable $attributes = []): SpanInterface
+    {
+        // TODO: Implement recordException() method.
     }
 }

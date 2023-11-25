@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use TTM\Telemetry\LogTracerFactory;
-use TTM\Telemetry\NullTracerFactory;
+use Yiisoft\Telemetry\LogTracerFactory;
+use Yiisoft\Telemetry\NullTracerFactory;
 
 return [
     'ttm/telemetry' => [

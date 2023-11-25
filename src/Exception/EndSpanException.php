@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry\Exception;
+namespace Yiisoft\Telemetry\Exception;
 
 final class EndSpanException extends \RuntimeException
 {

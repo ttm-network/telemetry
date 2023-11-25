@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
 interface TracerInterface
 {

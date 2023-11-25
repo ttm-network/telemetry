@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\UuidFactoryInterface;
-use TTM\Telemetry\Exception\EndSpanException;
+use Yiisoft\Telemetry\Exception\EndSpanException;
 use Yiisoft\Injector\Injector;
 
 /**
@@ -87,6 +87,16 @@ final class LogTracer extends AbstractTracer
         $elapsed = $this->clock->now() - $startTime;
 
         $this->log($span, false, $traceKind, $elapsed);
+    }
+
+    public function endAllSpans(): void
+    {
+        if ($this->spans === []) {
+            return;
+        }
+
+        $spans = array_reverse($this->spans);
+        array_walk($spans, fn(SpanInterface $span) => $this->endSpan($span));
     }
 
     private function log(SpanInterface $span, bool $scoped, TraceKind $traceKind, int $elapsed): void

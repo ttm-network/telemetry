@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry\Monolog;
+namespace Yiisoft\Telemetry\Monolog;
 
 use Monolog\Processor\ProcessorInterface;
 use Psr\Container\ContainerInterface;
-use TTM\Telemetry\TracerInterface;
+use Yiisoft\Telemetry\TracerInterface;
 
 final class TelemetryProcessor implements ProcessorInterface
 {

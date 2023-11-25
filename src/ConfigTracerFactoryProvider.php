@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
 use Psr\Container\ContainerInterface;
-use TTM\Telemetry\Exception\InvalidArgumentException;
+use Yiisoft\Telemetry\Exception\InvalidArgumentException;
 
 final class ConfigTracerFactoryProvider implements TracerFactoryProviderInterface
 {

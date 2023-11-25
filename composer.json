@@ -1,5 +1,5 @@
 {
-  "name": "ttm-network/telemetry",
+  "name": "yiisoft/telemetry",
   "type": "library",
   "description": "Telemetry is a collection of tools to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) to help you analyze your software’s performance and behavior.",
   "license": "MIT",
@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "TTM\\Telemetry\\": "src"
+      "Yiisoft\\Telemetry\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "TTM\\Tests\\Telemetry\\": "tests"
+      "Yiisoft\\Tests\\Telemetry\\": "tests"
     }
   },
   "extra": {

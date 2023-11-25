@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry\Span;
+namespace Yiisoft\Telemetry\Span;
 
 /**
  * @internal

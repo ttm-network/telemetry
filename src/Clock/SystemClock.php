@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry\Clock;
+namespace Yiisoft\Telemetry\Clock;
 
-use TTM\Telemetry\ClockInterface;
+use Yiisoft\Telemetry\ClockInterface;
 
 /**
  * @internal

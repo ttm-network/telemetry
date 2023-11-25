@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace Yiisoft\Telemetry;
 
-use TTM\Telemetry\Exception\TracerException;
+use Yiisoft\Telemetry\Exception\TracerException;
 
 interface TracerFactoryProviderInterface
 {
