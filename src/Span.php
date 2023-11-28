@@ -13,13 +13,19 @@ use TTM\Telemetry\Span\Status;
 final class Span implements SpanInterface
 {
     private ?Status $status = null;
+    private array $events = [];
 
     /**
      * @param non-empty-string $name
      */
     public function __construct(
         private string $name,
-        private array $attributes = []
+        private readonly TraceKind $traceKind,
+        private readonly ClockInterface $clock,
+        private readonly StackTraceFormatterInterface $stackTraceFormatter,
+        private readonly ?int $startEpochNanos = null,
+        private array $attributes = [],
+        private readonly array $links = []
     ) {
     }
 
@@ -33,6 +39,11 @@ final class Span implements SpanInterface
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getKind(): TraceKind
+    {
+        return $this->traceKind;
     }
 
     public function getAttributes(): array
@@ -64,6 +75,11 @@ final class Span implements SpanInterface
         return $this->attributes[$name] ?? null;
     }
 
+    public function getStartEpochNanos(): int
+    {
+        return $this->startEpochNanos;
+    }
+
     public function setStatus(string|int $code, string $description = null): self
     {
         $this->status = new Status($code, $description);
@@ -78,11 +94,38 @@ final class Span implements SpanInterface
 
     public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface
     {
-        // TODO: Implement addEvent() method.
+        $timestamp ??= $this->clock->now();
+
+        $this->events[] = new Event($name, $timestamp, $attributes);
+
+        return $this;
+    }
+
+    public function getEvents(): array
+    {
+        return $this->events;
+    }
+
+    public function getLinks(): array
+    {
+        return $this->links;
     }
 
     public function recordException(Throwable $exception, iterable $attributes = []): SpanInterface
     {
-        // TODO: Implement recordException() method.
+        $timestamp ??= $this->clock->now();
+        $eventAttributes = [
+            'exception.type' => get_class($exception),
+            'exception.message' => $exception->getMessage(),
+            'exception.stacktrace' => $this->stackTraceFormatter->format($exception),
+        ];
+
+        foreach ($attributes as $key => $value) {
+            $eventAttributes[$key] = $value;
+        }
+
+        $this->events[] = new Event('exception', $timestamp, $eventAttributes);
+
+        return $this;
     }
 }

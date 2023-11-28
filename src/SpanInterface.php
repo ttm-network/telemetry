@@ -46,6 +46,12 @@ interface SpanInterface
      */
     public function setAttributes(array $attributes): self;
 
+    public function getKind(): TraceKind;
+
+    public function getStartEpochNanos(): int;
+
+    public function getLinks(): array;
+
     /**
      * Set the current span attribute.
      *
@@ -57,6 +63,8 @@ interface SpanInterface
      * Add event to current span
      */
     public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface;
+
+    public function getEvents(): array;
 
     public function recordException(Throwable $exception, iterable $attributes = []): SpanInterface;
 

@@ -7,6 +7,8 @@ use TTM\Telemetry\Clock\SystemClock;
 use TTM\Telemetry\ClockInterface;
 use TTM\Telemetry\ConfigTracerFactoryProvider;
 use TTM\Telemetry\LogTracer;
+use TTM\Telemetry\StackTraceFormatter;
+use TTM\Telemetry\StackTraceFormatterInterface;
 use TTM\Telemetry\TracerFactoryInterface;
 use TTM\Telemetry\TracerFactoryProviderInterface;
 use TTM\Telemetry\TracerInterface;
@@ -31,5 +33,6 @@ return [
         'class' => LogTracer::class,
         'reset' => function (): void {
         }
-    ]
+    ],
+    StackTraceFormatterInterface::class => StackTraceFormatter::class
 ];
