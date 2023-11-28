@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace TTM\Telemetry;
 
+use TTM\Telemetry\Collection\ItemBag;
 use TTM\Telemetry\Exception\TracerException;
 use Yiisoft\Injector\Injector;
+use TTM\Telemetry\Collection\SpanCollection;
 
 /**
  * @internal The component is under development.
@@ -29,7 +31,7 @@ abstract class AbstractTracer implements TracerInterface
             throw new TracerException('No active spans available.');
         }
 
-        return $this->spans->last();
+        return $this->spans->last()->span;
     }
 
     /**
@@ -50,6 +52,6 @@ abstract class AbstractTracer implements TracerInterface
         }
 
         $spans = array_reverse($this->spans->all());
-        array_walk($spans, fn(SpanInterface $span) => $this->endSpan($span));
+        array_walk($spans, fn(ItemBag $item) => $this->endSpan($item->span));
     }
 }

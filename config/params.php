@@ -11,6 +11,7 @@ return [
         'drivers' => [
             'null' => NullTracerFactory::class,
             'log' => LogTracerFactory::class,
-        ]
+        ],
+        'registry' => []
     ]
 ];

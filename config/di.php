@@ -6,7 +6,6 @@ use Psr\Container\ContainerInterface;
 use TTM\Telemetry\Clock\SystemClock;
 use TTM\Telemetry\ClockInterface;
 use TTM\Telemetry\ConfigTracerFactoryProvider;
-use TTM\Telemetry\LogTracer;
 use TTM\Telemetry\SpanCollection;
 use TTM\Telemetry\StackTraceFormatter;
 use TTM\Telemetry\StackTraceFormatterInterface;
@@ -36,8 +35,7 @@ return [
         );
     },
     ClockInterface::class => static function (ContainerInterface $container) use ($params) {
-        return $container->get($params['ttm/telemetry']['dependencies']['clock'] ?? SystemClock::class);
+        return $container->get($params['ttm/telemetry']['registry']['clock'] ?? SystemClock::class);
     },
-    LogTracer::class => LogTracer::class,
     StackTraceFormatterInterface::class => StackTraceFormatter::class
 ];

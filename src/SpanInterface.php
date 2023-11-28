@@ -64,6 +64,9 @@ interface SpanInterface
      */
     public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface;
 
+    /**
+     * @return Event[]
+     */
     public function getEvents(): array;
 
     public function recordException(Throwable $exception, iterable $attributes = []): SpanInterface;
@@ -81,10 +84,4 @@ interface SpanInterface
      * @param non-empty-string $name
      */
     public function getAttribute(string $name): mixed;
-
-    public function setSpanLink(SpanLink $link): self;
-
-    public function getSpanLink(): SpanLink;
-
-    public function unlinkSpan(): self;
 }
