@@ -81,4 +81,10 @@ interface SpanInterface
      * @param non-empty-string $name
      */
     public function getAttribute(string $name): mixed;
+
+    public function setSpanLink(SpanLink $link): self;
+
+    public function getSpanLink(): SpanLink;
+
+    public function unlinkSpan(): self;
 }

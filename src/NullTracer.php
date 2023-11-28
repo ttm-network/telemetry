@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TTM\Telemetry;
 
-use TTM\Telemetry\Exception\TracerException;
 use Yiisoft\Injector\Injector;
 
 /**
@@ -39,14 +38,14 @@ final class NullTracer extends AbstractTracer
             stackTraceFormatter: $this->stackTraceFormatter
         );
 
-        $this->spans[spl_object_id($span)] = $span;
+        $this->spans->add($span);
 
         return $span;
     }
 
     public function endSpan(SpanInterface $span): void
     {
-        unset($this->spans[spl_object_id($span)]);
+        $this->spans->remove($span);
     }
 
     public function trace(

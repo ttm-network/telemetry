@@ -14,6 +14,7 @@ final class Span implements SpanInterface
 {
     private ?Status $status = null;
     private array $events = [];
+    private mixed $link = null;
 
     /**
      * @param non-empty-string $name
@@ -126,6 +127,23 @@ final class Span implements SpanInterface
 
         $this->events[] = new Event('exception', $timestamp, $eventAttributes);
 
+        return $this;
+    }
+
+    public function setSpanLink(SpanLink $link): self
+    {
+        $this->link = $link;
+        return $this;
+    }
+
+    public function getSpanLink(): SpanLink
+    {
+        return $this->link;
+    }
+
+    public function unlinkSpan(): self
+    {
+        $this->link = null;
         return $this;
     }
 }

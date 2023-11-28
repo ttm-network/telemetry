@@ -52,9 +52,4 @@ abstract class AbstractTracer implements TracerInterface
         $spans = array_reverse($this->spans->all());
         array_walk($spans, fn(SpanInterface $span) => $this->endSpan($span));
     }
-
-    private function getSpanId(SpanInterface $span): int
-    {
-        return spl_object_id($span);
-    }
 }
