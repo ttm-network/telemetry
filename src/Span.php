@@ -65,6 +65,15 @@ final class Span implements SpanInterface
         return $this;
     }
 
+    public function addAttributes(array $attributes): self
+    {
+        foreach ($attributes as $attribute => $value) {
+            $this->setAttribute($attribute, $value);
+        }
+
+        return $this;
+    }
+
     public function hasAttribute(string $name): bool
     {
         return isset($this->attributes[$name]);

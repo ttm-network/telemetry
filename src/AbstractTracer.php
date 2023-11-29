@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace TTM\Telemetry;
 
 use TTM\Telemetry\Collection\ItemBag;
+use TTM\Telemetry\Collection\SpanCollection;
 use TTM\Telemetry\Exception\TracerException;
 use Yiisoft\Injector\Injector;
-use TTM\Telemetry\Collection\SpanCollection;
 
 /**
  * @internal The component is under development.
@@ -37,12 +37,9 @@ abstract class AbstractTracer implements TracerInterface
     /**
      * @throws \Throwable
      */
-    final protected function runScope(Span $span, callable $callback): mixed
+    final protected function runScope(SpanInterface $span, callable $callback): mixed
     {
-        return $this->injector->invoke($callback, [
-            SpanInterface::class => $span,
-            TracerInterface::class => $this
-        ]);
+        return $this->injector->invoke($callback, [$span]);
     }
 
     public function endAllSpans(): void

@@ -60,6 +60,11 @@ interface SpanInterface
     public function setAttribute(string $name, mixed $value): self;
 
     /**
+     * Add attributes to the current span. If the attribute key already exists, it will be overwritten.
+     */
+    public function addAttributes(array $attributes): self;
+
+    /**
      * Add event to current span
      */
     public function addEvent(string $name, iterable $attributes = [], int $timestamp = null): SpanInterface;
