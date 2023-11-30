@@ -8,8 +8,5 @@ namespace TTM\Telemetry;
 
 interface TracerFactoryInterface
 {
-    /**
-     * Make tracer object with given context
-     */
-    public function make(array $context = []): TracerInterface;
+    public function create(?string $name = null): TracerInterface;
 }

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use TTM\Telemetry\LogTracerFactory;
-use TTM\Telemetry\NullTracerFactory;
+use TTM\Telemetry\LogTracer;
+use TTM\Telemetry\NullTracer;
 
 return [
     'ttm/telemetry' => [
         'default' => 'null',
         'drivers' => [
-            'null' => NullTracerFactory::class,
-            'log' => LogTracerFactory::class,
+            'null' => NullTracer::class,
+            'log' => LogTracer::class,
         ],
         'registry' => []
     ]

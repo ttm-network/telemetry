@@ -7,7 +7,7 @@ namespace TTM\Telemetry;
 use Psr\Container\ContainerInterface;
 use TTM\Telemetry\Exception\InvalidArgumentException;
 
-final class ConfigTracerFactoryProvider implements TracerFactoryProviderInterface
+final class TracerFactory implements TracerFactoryInterface
 {
     public function __construct(
         private readonly string $default,
@@ -17,7 +17,7 @@ final class ConfigTracerFactoryProvider implements TracerFactoryProviderInterfac
     ) {
     }
 
-    public function getTracerFactory(?string $name = null): TracerFactoryInterface
+    public function create(?string $name = null): TracerInterface
     {
         $name ??= $this->default;
 

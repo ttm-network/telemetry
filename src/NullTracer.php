@@ -13,15 +13,11 @@ final class NullTracer extends AbstractTracer
 {
     public function __construct(
         Injector $injector,
+        Context $context,
         private readonly ClockInterface $clock,
         private readonly StackTraceFormatterInterface $stackTraceFormatter,
     ) {
-        parent::__construct($injector);
-    }
-
-    public function getContext(): array
-    {
-        return [];
+        parent::__construct($injector, $context);
     }
 
     public function startSpan(

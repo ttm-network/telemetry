@@ -17,17 +17,13 @@ final class LogTracer extends AbstractTracer
 
     public function __construct(
         Injector $injector,
+        Context $context,
         private readonly ClockInterface $clock,
         private readonly LoggerInterface $logger,
         private readonly UuidFactoryInterface $uuidFactory,
         private readonly StackTraceFormatterInterface $stackTraceFormatter,
     ) {
-        parent::__construct($injector);
-    }
-
-    public function getContext(): array
-    {
-        return $this->context;
+        parent::__construct($injector, $context);
     }
 
     public function startSpan(

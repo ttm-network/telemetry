@@ -11,7 +11,7 @@ interface TracerInterface
     /**
      * Get current tracer context
      */
-    public function getContext(): array;
+    public function getContext(): Context;
 
     /**
      * @throws ActiveSpanUnavailableException

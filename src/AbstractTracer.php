@@ -21,8 +21,14 @@ abstract class AbstractTracer implements TracerInterface
 
     public function __construct(
         private readonly ?Injector $injector,
+        private readonly Context $context
     ) {
         $this->spans = new SpanCollection();
+    }
+
+    public function getContext(): Context
+    {
+        return $this->context;
     }
 
     public function getCurrentSpan(): SpanInterface
