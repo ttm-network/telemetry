@@ -6,7 +6,6 @@ namespace TTM\Telemetry;
 
 use TTM\Telemetry\Collection\ItemBag;
 use TTM\Telemetry\Collection\SpanCollection;
-use TTM\Telemetry\Context\Context;
 use TTM\Telemetry\Exception\TracerException;
 use Yiisoft\Injector\Injector;
 
@@ -19,15 +18,15 @@ abstract class AbstractTracer implements TracerInterface
      * @var SpanCollection<SpanInterface>
      */
     protected readonly SpanCollection $spans;
+    protected array $context;
 
     public function __construct(
         private readonly ?Injector $injector,
-        protected readonly Context $context
     ) {
         $this->spans = new SpanCollection();
     }
 
-    public function getContext(): Context
+    public function getContext(): array
     {
         return $this->context;
     }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TTM\Telemetry;
 
-use TTM\Telemetry\Context\Context;
 use TTM\Telemetry\Exception\ActiveSpanUnavailableException;
 
 interface TracerInterface
@@ -12,7 +11,7 @@ interface TracerInterface
     /**
      * Get current tracer context
      */
-    public function getContext(): Context;
+    public function getContext(): array;
 
     /**
      * @throws ActiveSpanUnavailableException
@@ -23,6 +22,7 @@ interface TracerInterface
         string $name,
         array $attributes = [],
         bool $scoped = false,
+        array $context = [],
         ?TraceKind $traceKind = null,
         ?int $startTime = null
     ): SpanInterface;
@@ -36,6 +36,7 @@ interface TracerInterface
         callable $callback,
         array $attributes = [],
         bool $scoped = false,
+        array $context = [],
         ?TraceKind $traceKind = null,
         ?int $startTime = null
     ): mixed;

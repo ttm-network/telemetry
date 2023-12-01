@@ -17,19 +17,49 @@ final class LogTracer extends AbstractTracer
 
     public function __construct(
         Injector $injector,
-        Context $context,
         private readonly ClockInterface $clock,
         private readonly LoggerInterface $logger,
         private readonly UuidFactoryInterface $uuidFactory,
         private readonly StackTraceFormatterInterface $stackTraceFormatter,
     ) {
-        parent::__construct($injector, $context);
+        parent::__construct($injector);
+    }
+
+    public function trace(
+        string $name,
+        callable $callback,
+        array $attributes = [],
+        bool $scoped = false,
+        array $context = [],
+        ?TraceKind $traceKind = null,
+        ?int $startTime = null
+    ): mixed {
+        $span = new Span(
+            name: $name,
+            traceKind: $traceKind ?? TraceKind::INTERNAL,
+            clock: $this->clock,
+            stackTraceFormatter: $this->stackTraceFormatter,
+            attributes: $attributes
+        );
+
+        $this->context['telemetry'] = $this->uuidFactory->uuid4()->toString();
+
+        $startTime ??= $this->clock->now();
+
+        $result = $this->runScope($span, $callback);
+
+        $elapsed = $this->clock->now() - $startTime;
+
+        $this->log($span, $scoped, $traceKind, $elapsed);
+
+        return $result;
     }
 
     public function startSpan(
         string $name,
         array $attributes = [],
         bool $scoped = false,
+        array $context = [],
         ?TraceKind $traceKind = null,
         ?int $startTime = null
     ): SpanInterface {
@@ -54,35 +84,6 @@ final class LogTracer extends AbstractTracer
 
         $this->log($span, false, $span->getKind(), $elapsed);
         $this->spans->remove($span);
-    }
-
-    public function trace(
-        string $name,
-        callable $callback,
-        array $attributes = [],
-        bool $scoped = false,
-        ?TraceKind $traceKind = null,
-        ?int $startTime = null
-    ): mixed {
-        $span = new Span(
-            name: $name,
-            traceKind: $traceKind ?? TraceKind::INTERNAL,
-            clock: $this->clock,
-            stackTraceFormatter: $this->stackTraceFormatter,
-            attributes: $attributes
-        );
-
-        $this->context['telemetry'] = $this->uuidFactory->uuid4()->toString();
-
-        $startTime ??= $this->clock->now();
-
-        $result = $this->runScope($span, $callback);
-
-        $elapsed = $this->clock->now() - $startTime;
-
-        $this->log($span, $scoped, $traceKind, $elapsed);
-
-        return $result;
     }
 
     private function log(SpanInterface $span, bool $scoped, TraceKind $traceKind, int $elapsed): void

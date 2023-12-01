@@ -6,5 +6,5 @@ namespace TTM\Telemetry\Context;
 
 interface ContextExtractorInterface
 {
-    public function extract(array $data): Context;
+    public function extract(array $data): array;
 }
