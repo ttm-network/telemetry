@@ -22,7 +22,7 @@ abstract class AbstractTracer implements TracerInterface
 
     public function __construct(
         private readonly ?Injector $injector,
-        private readonly Context $context
+        protected readonly Context $context
     ) {
         $this->spans = new SpanCollection();
     }

@@ -29,12 +29,12 @@ final class SpanCollection
 
     public function last(): ?ItemBag
     {
-        return $this->items[array_key_last($this->items)];
+        return $this->items[array_key_last($this->items)] ?? null;
     }
 
     public function link(SpanInterface $span): ?SpanLink
     {
-        return $this->items[$this->getItemId($span)]->link;
+        return $this->items[$this->getItemId($span)]?->link;
     }
 
     public function all(): array
