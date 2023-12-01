@@ -39,7 +39,7 @@ return [
         'class' => ContextExtractFactory::class,
         '__construct()' => [
             'default' => $params['ttm/telemetry']['context/extractor']['default'],
-            'drivers' => $params['ttm/telemetry']['context/extractor']['extractors']
+            'extractors' => $params['ttm/telemetry']['context/extractor']['extractors']
         ]
     ],
     ClockInterface::class => static function (ContainerInterface $container) use ($params) {
