@@ -6,6 +6,7 @@ namespace TTM\Telemetry;
 
 use TTM\Telemetry\Collection\ItemBag;
 use TTM\Telemetry\Collection\SpanCollection;
+use TTM\Telemetry\Context\Context;
 use TTM\Telemetry\Exception\TracerException;
 use Yiisoft\Injector\Injector;
 

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use TTM\Telemetry\Context\NullContextExtractor;
 use TTM\Telemetry\LogTracer;
 use TTM\Telemetry\NullTracer;
 
@@ -11,6 +12,12 @@ return [
         'drivers' => [
             'null' => NullTracer::class,
             'log' => LogTracer::class,
+        ],
+        'context/extractor' => [
+            'default' => 'null',
+            'extractors' => [
+                'null' => NullContextExtractor::class
+            ]
         ],
         'registry' => []
     ]

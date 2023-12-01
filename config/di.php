@@ -6,6 +6,7 @@ use Psr\Container\ContainerInterface;
 use TTM\Telemetry\Clock\SystemClock;
 use TTM\Telemetry\ClockInterface;
 use TTM\Telemetry\Collection\SpanCollection;
+use TTM\Telemetry\Context\ContextExtractFactory;
 use TTM\Telemetry\StackTraceFormatter;
 use TTM\Telemetry\StackTraceFormatterInterface;
 use TTM\Telemetry\TracerFactory;
@@ -28,6 +29,13 @@ return [
         '__construct()' => [
             'default' => $params['ttm/telemetry']['default'],
             'drivers' => $params['ttm/telemetry']['drivers']
+        ]
+    ],
+    ContextExtractFactory::class => [
+        'class' => ContextExtractFactory::class,
+        '__construct()' => [
+            'default' => $params['ttm/telemetry']['context/extractor']['default'],
+            'drivers' => $params['ttm/telemetry']['context/extractor']['extractors']
         ]
     ],
     ClockInterface::class => static function (ContainerInterface $container) use ($params) {

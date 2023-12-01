@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TTM\Telemetry;
 
+use TTM\Telemetry\Context\Context;
 use TTM\Telemetry\Exception\ActiveSpanUnavailableException;
 
 interface TracerInterface

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TTM\Telemetry;
+namespace TTM\Telemetry\Context;
 
 final class Context
 {
@@ -15,9 +15,9 @@ final class Context
         return $this->context;
     }
 
-    public function setContext(array $ctx): void
+    public function setContext(array $context): void
     {
-        $this->context = $ctx;
+        $this->context = $context;
     }
 
     public function resetContext(): void
