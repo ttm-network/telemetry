@@ -7,6 +7,7 @@ use TTM\Telemetry\Clock\SystemClock;
 use TTM\Telemetry\ClockInterface;
 use TTM\Telemetry\Collection\SpanCollection;
 use TTM\Telemetry\Context\ContextExtractFactory;
+use TTM\Telemetry\Context\ContextExtractorInterface;
 use TTM\Telemetry\StackTraceFormatter;
 use TTM\Telemetry\StackTraceFormatterInterface;
 use TTM\Telemetry\TracerFactory;
@@ -31,6 +32,9 @@ return [
             'drivers' => $params['ttm/telemetry']['drivers']
         ]
     ],
+    ContextExtractorInterface::class => static function (ContainerInterface $container): ContextExtractorInterface {
+        return $container->get(ContextExtractFactory::class)->create();
+    },
     ContextExtractFactory::class => [
         'class' => ContextExtractFactory::class,
         '__construct()' => [
