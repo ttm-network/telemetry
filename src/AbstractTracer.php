@@ -17,7 +17,7 @@ abstract class AbstractTracer implements TracerInterface
     /**
      * @var SpanCollection<SpanInterface>
      */
-    protected readonly SpanCollection $spans;
+    protected SpanCollection $spans;
     protected array $context = [];
 
     public function __construct(
