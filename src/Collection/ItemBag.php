@@ -9,7 +9,7 @@ use TTM\Telemetry\SpanLink;
 
 final class ItemBag
 {
-    public function __construct(public readonly SpanInterface $span, public readonly SpanLink $link)
+    public function __construct(public readonly SpanInterface $span, public readonly ?SpanLink $link = null)
     {
     }
 }
